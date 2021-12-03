@@ -2,17 +2,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <title type="text">Hugo 主题 MemE</title>
+    <title type="text">fxding小站</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2021-12-03T22:23:20&#43;08:00</updated>
+    <updated>2021-12-03T23:49:39&#43;08:00</updated>
     <id>https://fxding2019.github.io/</id>
     <link rel="alternate" type="text/html" href="https://fxding2019.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://fxding2019.github.io/atom.xml" />
     <author>
-            <name>reuixiy</name>
+            <name>fxding</name>
             <uri>https://fxding2019.github.io/</uri>
             
-                <email>reuixiy@gmail.com</email>
+                <email>fxding2019@gmail.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.89.4">Hugo</generator>
@@ -23,9 +23,9 @@
             <updated>2021-12-03T22:22:57&#43;08:00</updated>
             <published>2021-12-03T21:34:42&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
+                    <name>fxding</name>
                     <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <email>fxding2019@gmail.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Typora图片自动上传 前言 现存问题 习惯使用markdown的人应该都Typora非……</summary>
             
@@ -119,9 +119,9 @@
             <updated>2021-12-03T21:30:37&#43;08:00</updated>
             <published>2021-12-03T20:58:43&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
+                    <name>fxding</name>
                     <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <email>fxding2019@gmail.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">hugo博客搭建并部署到GitHub【 for Windows】 下载配置hugo 打开 Hugo 官方 GitHub……</summary>
             

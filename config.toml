@@ -2,7 +2,7 @@
 # 站点配置
 
 baseURL = "https://fxding2019.github.io/"
-title = "Hugo 主题 MemE"
+title = "fxding小站"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 publishDir = "docs"
@@ -97,17 +97,17 @@ uglyURLs = false
 # 作者信息
 [author]
     # 名字
-    name = "reuixiy"
+    name = "fxding"
     # 邮箱
-    email = "reuixiy@gmail.com"
+    email = "fxding2019@gmail.com"
     # 座右铭或简介
-    motto = "Viva La Vida"
+    motto = "everything will be better"
     # 头像
     avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
     website = "https://io-oi.me/"
     # 推特
-    twitter = "reuixiy"
+    twitter = "fxding"
 
 # 相关文章
 [related]
