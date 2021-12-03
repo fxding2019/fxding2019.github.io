@@ -6,8 +6,6 @@ draft: false
 
 # hugo博客搭建并部署到GitHub【 for Windows】
 
-[TOC]
-
 ### 下载配置hugo
 
 1. 打开 Hugo 官方 GitHub 的 [**Releases**](https://github.com/gohugoio/hugo/releases) 页面
