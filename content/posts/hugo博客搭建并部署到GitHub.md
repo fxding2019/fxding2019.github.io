@@ -1,7 +1,7 @@
 ---
 title: "Hugo博客搭建并部署到GitHub"
 date: 2021-12-03T20:58:43+08:00
-draft: true
+draft: false
 ---
 
 # hugo博客搭建并部署到GitHub【 for Windows】

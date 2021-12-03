@@ -23,10 +23,124 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 03 Dec 2021 21:16:59 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 03 Dec 2021 21:19:49 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://fxding2019.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Hugo博客搭建并部署到GitHub</title>
+                <link>https://fxding2019.github.io/posts/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/</link>
+                <guid isPermaLink="true">https://fxding2019.github.io/posts/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/</guid>
+                <pubDate>Fri, 03 Dec 2021 20:58:43 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;hugo博客搭建并部署到github-for-windows&#34;&gt;hugo博客搭建并部署到GitHub【 for Windows】&lt;/h1&gt;
+&lt;h3 id=&#34;下载配置hugo&#34;&gt;下载配置hugo&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 Hugo 官方 GitHub 的 &lt;a href=&#34;https://github.com/gohugoio/hugo/releases&#34;&gt;&lt;strong&gt;Releases&lt;/strong&gt;&lt;/a&gt; 页面&lt;/li&gt;
+&lt;li&gt;选择最新的版本下载（选择 &lt;code&gt;hugo_xxx_Windows-64/32bit.zip&lt;/code&gt;），如果使用&lt;code&gt;meme&lt;/code&gt;主题，要下载extended版本的。&lt;/li&gt;
+&lt;li&gt;将压缩包内的 &lt;code&gt;hugo.exe&lt;/code&gt; 文件解压至 &lt;code&gt;D:\hugo&lt;/code&gt; 文件夹目录下&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;文件资源管理器&lt;/code&gt;（即 &lt;code&gt;我的电脑&lt;/code&gt;）中空白处点击鼠标右键，打开属性&lt;/li&gt;
+&lt;li&gt;依次点击 &lt;code&gt;高级系统设置&lt;/code&gt; - &lt;code&gt;环境变量&lt;/code&gt; ，双击打开系统变量中的 &lt;code&gt;Path&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在环境变量界面中双击空白行，添加 &lt;code&gt;D:\hugo&lt;/code&gt;，点击确定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打开命令提示符，输入语句：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-undefined&#34; data-lang=&#34;undefined&#34;&gt;hugo version
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以确认 Hugo 是否安装成功（如果安装成功就能看到版本号）&lt;/p&gt;
+&lt;h3 id=&#34;新建github-repository&#34;&gt;新建github repository&lt;/h3&gt;
+&lt;p&gt;新建一个后缀为&lt;code&gt;.github.io&lt;/code&gt;的 repository&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/FhYJUyq2nQVld91.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;github与hugo建立关联&#34;&gt;github与hugo建立关联&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;直接clone上述的repository【也可以自己在本地计算机建好文件，然后使用&lt;code&gt; git remote add origin&lt;/code&gt;与远程仓库建立关联】&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入repository的根目录，运行git bash here，执行以下命令&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new site .   // 在当前目录下创建hugo站点
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;安装主题&#34;&gt;安装主题&lt;/h3&gt;
+&lt;p&gt;进入到&lt;code&gt;themes目录&lt;/code&gt;下，在&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;官网主题&lt;/a&gt;中选择一款主题，或使用本作者&lt;a href=&#34;https://github.com/reuixiy/hugo-theme-meme&#34;&gt;推荐的主题&lt;/a&gt;，&lt;code&gt;git clone&lt;/code&gt;下来之后把&lt;code&gt;themes/meme/config-examples/zh-cn/&lt;/code&gt;目录下的&lt;code&gt;config.toml&lt;/code&gt;文件复制一份到repository根目录下，修改相关的配置，更多meme主题配置介绍见&lt;a href=&#34;https://io-oi.me/tech/documentation-of-hugo-theme-meme/#hugo&#34;&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;// 默认为：
+baseURL = &amp;quot;http://example.org/&amp;quot;
+languageCode = &amp;quot;en-us&amp;quot;
+title = &amp;quot;My New Hugo Site&amp;quot;
+
+// 修改为
+baseURL = &amp;quot;github发布出去的博客地址&amp;quot;
+languageCode = &amp;quot;en-us&amp;quot;
+title = &amp;quot;My New Hugo Site&amp;quot;
+publishDir = &amp;quot;docs&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改了baseURL，并增加了publishDir。publishDir的修改是因为：当在content目录下添加了.md文件后，需要执行&lt;code&gt;hugo -t &amp;lt;主题名&amp;gt;&lt;/code&gt;来用hugo把发布用的目录编译出来，而默认的编译目录名为&lt;code&gt;publish&lt;/code&gt;，这里改成了&lt;code&gt;docs&lt;/code&gt;，这是因为Github规定了用做Gitpages的分类只有三种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;发布路径在master分支下。&lt;/li&gt;
+&lt;li&gt;发布路径在master分支的docs目录下。&lt;/li&gt;
+&lt;li&gt;发布路径在gh-pages 分支下。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;只将默认的发布目录/publish推送上去，不利于跨设备修改我的博客，因此要将整个目录都推送上去，然后将/publish改成/docs，给github识别成gitpages用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;详情见  &lt;a href=&#34;https://help.github.com/articles/user-organization-and-project-pages/&#34;&gt;User, Organization, and Project Pages&lt;/a&gt;，参考自&lt;a href=&#34;https://www.jianshu.com/p/02b3343295ac&#34;&gt;Hugo配合GitHub搭建博客（Windows 10）&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;新建文章&#34;&gt;新建文章&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根目录下git bash执行&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new &amp;quot;posts/hello-world.md&amp;quot;
+hugo new &amp;quot;about/_index.md&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地运行&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo server -D
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不到 100 ms 后，打开 http://localhost:1313/，恭喜你！你已经成功在本地搭建好博客了🎉🎉🍻！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：如果不加&lt;code&gt;-D&lt;/code&gt;参数，本地运行看不到相关文件内容，可以打开文件，把&lt;code&gt;draft=true&lt;/code&gt;改为&lt;code&gt;false&lt;/code&gt;，然后运行&lt;code&gt;hugo server&lt;/code&gt;进行查看&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;发布文章&#34;&gt;发布文章&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;把文件的&lt;code&gt;draft=true&lt;/code&gt;改为&lt;code&gt;false&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行以下命令生成发布目录【经上面的配置之后，在docs下生成】&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo -t meme  // 根目录下执行，meme是hugo主题名
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用git上传发布&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git add .
+git commit -m &amp;quot;XXX&amp;quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在github repository的&lt;code&gt;settings -&amp;gt; Pages&lt;/code&gt;中，把GitHub Pages Source改为&lt;code&gt;docs&lt;/code&gt;目录，点击save保存&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/dvwHtoZPXph8miQ.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击published site连接即可访问&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果本地更新之后，github published site页面内容没有更新，可能是浏览器缓存造成的，清理缓存即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Success</title>
