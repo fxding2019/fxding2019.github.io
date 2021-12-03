@@ -23,10 +23,103 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 03 Dec 2021 21:30:50 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 03 Dec 2021 22:23:20 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://fxding2019.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Typora图片自动上传</title>
+                <link>https://fxding2019.github.io/posts/typora%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0/</link>
+                <guid isPermaLink="true">https://fxding2019.github.io/posts/typora%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0/</guid>
+                <pubDate>Fri, 03 Dec 2021 21:34:42 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;typora图片自动上传&#34;&gt;Typora图片自动上传&lt;/h1&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;h3 id=&#34;现存问题&#34;&gt;现存问题&lt;/h3&gt;
+&lt;p&gt;习惯使用markdown的人应该都Typora非常简洁高效，但导入文件的时候，只会把文件保存在本地计算机，文件中保存的是本地的绝对路径，当在本地写好文档上传当各个技术博客平台时，还需要手动的上传一遍，图片多的时候无疑是一个很大的工作量。&lt;/p&gt;
+&lt;h3 id=&#34;解决方案&#34;&gt;解决方案&lt;/h3&gt;
+&lt;p&gt;Typora 编辑器在新版本上(≥ 0.9.9.32 on macOS or 0.9.84 on Windows / Linux) 增加了一个 &lt;code&gt;上传图片&lt;/code&gt; 的功能，通过第三方app或脚本在插入图片时将图片上传到网络，然后文档中会直接插入图片的图床链接。&lt;/p&gt;
+&lt;p&gt;接下来介绍Typora如何通过PicGo来自动/手动上传图片到自建github图床。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;图床就是一个你在网络上存放图片的地方，很多公司都提供了这样一个地方让你存放图片，比如微博，简书，七牛云等，但这些毕竟是公司资源，说不定哪天就不能访问了。所以，自己构建一个图床就显得比较重要了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;创建图床&#34;&gt;创建图床&lt;/h2&gt;
+&lt;p&gt;GitHub + PicGo + jsDelivr 的方式是目前比较主流的方式。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;GitHub 用来存放图片，目前投入微软怀抱，后台硬，不会随便倒闭&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FMolunerfinn%2FPicGo&#34;&gt;PicGo &lt;/a&gt; 是一个用于快速上传图片并获取图片 URL 链接的工具，通过该链接访问网络图片资源&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://links.jianshu.com/go?to=https%3A%2F%2Fwww.jsdelivr.com%2F&#34;&gt;jsDelivr&lt;/a&gt; 是用于开源项目的免费公共CDN(Content Delivery Network，即内容分发网络)，用来加速GitHub的访问速度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;创建github-repository&#34;&gt;创建GitHub repository&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/5qlyzFbGD1UuLHd.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;生成github-token&#34;&gt;生成GitHub Token&lt;/h3&gt;
+&lt;p&gt;进入个人设置 &lt;code&gt;Settings -&amp;gt; Developer settings -&amp;gt; Personal access tokens -&amp;gt; Generate new token&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/ED9LkWAhzQgGpsF.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;Note&lt;/code&gt;中填好描述，z选择一个合适的过期时候后，勾选&lt;code&gt;repo&lt;/code&gt;，然后点击&lt;code&gt;Generate token&lt;/code&gt;生成一个Token&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/Zcp3yXUHJC78LaG.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意这个Token只会显示一次，所以，需要保存下来&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/P6meLY5Fsr4XBGi.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;配置picgo&#34;&gt;配置PicGo&lt;/h3&gt;
+&lt;p&gt;下载安装&lt;a href=&#34;https://github.com/Molunerfinn/PicGo/releases&#34;&gt;PicGo&lt;/a&gt;后，打开GitHub图床配置窗口&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/12/03/IGYVC2NwjSD9Ovc.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;设定仓库名：按照 &lt;code&gt;用户名/图床仓库名&lt;/code&gt; 的格式填写&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;eg: fxding2019/PictureBed
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设定分支名：&lt;code&gt;master&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设定Token：填写之前在GitHub生成的Token&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指定存储路径：填写想要储存的路径，如 &lt;code&gt;BlogImg/&lt;/code&gt;，这样就会在仓库下创建一个名为&lt;code&gt;BlogImg&lt;/code&gt; 的文件夹，图片将会储存在此文件夹中。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;注意：BlogImg/ 不要写成 BlogImg
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设定自定义域名：图片上传后，PicGo 会按照 &lt;code&gt;自定义域名+储存路径+上传的图片名&lt;/code&gt; 的方式生成访问链接，并放到粘贴板上&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;eg: https://cdn.jsdelivr.net/gh/fxding2019/PictureBed
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为我们要使用 jsDelivr 加速访问，所以自定义域名可以设置为 &lt;code&gt;https://cdn.jsdelivr.net/gh/用户名/图床仓库名&lt;/code&gt;，上传完毕后，就可以通过 &lt;code&gt;https://cdn.jsdelivr.net/gh/用户名/图床仓库名/储存路径/上传的图片名&lt;/code&gt; 加速访问我们的图片了。存储路径为&lt;code&gt;BlogImg/&lt;/code&gt;,  所以通过&lt;code&gt;https://cdn.jsdelivr.net/gh/chenshifangcheng/PictureBed/BlogImg/上传的图片名&lt;/code&gt; 来加速访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击确定以及设置为默认图床&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开&lt;code&gt;时间戳重命名&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;上传图片时，如果多次上传同一张图片的话，文件名会一样，导致文件已存在而报错，在上传图片时使用时间戳不会因为文件名重复而报错。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fxding2019/PictureBed/BlogImg/202112032215151.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试上传&lt;/p&gt;
+&lt;p&gt;拖动图片进入上传区后自动上传图片，并在github repository中自动创建目录存放图片&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fxding2019/PictureBed/BlogImg/202112032217745.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;typora设置自动上传&#34;&gt;Typora设置自动上传&lt;/h2&gt;
+&lt;p&gt;进入&lt;code&gt;文件 -&amp;gt; 偏好设置 -&amp;gt; 图片&lt;/code&gt;，在&lt;code&gt;插入图片时&lt;/code&gt;区域，下拉框选择&lt;code&gt;上传图片&lt;/code&gt;，勾选如下三项&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fxding2019/PictureBed/BlogImg/202112032221254.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;code&gt;验证图片上传选项&lt;/code&gt;测试上传效果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fxding2019/PictureBed/BlogImg/202112032220934.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;至此，直接把图片粘贴到Typora时，就会转换为github图床的路径。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Hugo博客搭建并部署到GitHub</title>

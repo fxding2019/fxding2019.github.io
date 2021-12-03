@@ -3,5 +3,5 @@ hugo server -D	#本地预览
 # 发布的时候把文件的draft改为false
 hugo -t meme
 git add .
-git commit -m ""
+git commit -m "xxx"
 git push
