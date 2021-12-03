@@ -2,7 +2,7 @@
 # 站点配置
 
 baseURL = "https://fxding2019.github.io/"
-title = "fxding小站"
+title = "fxding的小站"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 publishDir = "docs"
